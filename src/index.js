@@ -9,21 +9,6 @@ let scene;
 let renderer;
 let uniforms;
 
-// eslint-disable-next-line no-unused-vars
-function link() {
-  const gl = renderer.context;
-
-  const glVertexShader = new THREE.WebGLShader(gl, gl.VERTEX_SHADER, vert);
-  const glFragmentShader = new THREE.WebGLShader(gl, gl.FRAGMENT_SHADER, frag);
-
-  const program = gl.createProgram();
-
-  gl.attachShader(program, glVertexShader);
-  gl.attachShader(program, glFragmentShader);
-
-  gl.linkProgram(program);
-}
-
 function render() {
   uniforms.u_time.value += 0.05;
   renderer.render(scene, camera);
@@ -36,23 +21,11 @@ function onWindowResize(event) {
   uniforms.u_resolution.value.y = renderer.domElement.height;
 }
 
-
-// const root = document.getElementById('root');
-
-// root.innerHTML = '<div style="padding: 20px"><h1>Welcome to threejs</h1></div>';
-
-// // This is needed for Hot Module Replacement
-// if (module.hot) {
-//   module.hot.accept();
-// }
-// const app = document.createElement('main');
-// const text = document.createTextNode('Hello world!');
-
-// app.appendChild(text);
-// document.getElementById('root').appendChild(app);
-
 function init() {
   container = document.getElementById('root');
+  if (module.hot) {
+    module.hot.accept();
+  }
 
   camera = new THREE.Camera();
   camera.position.z = 1;

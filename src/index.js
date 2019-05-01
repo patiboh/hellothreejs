@@ -22,19 +22,7 @@ function onWindowResize(event) {
 }
 
 function init() {
-  document.title = '👾 ✨ 🐳';
-  container = document.getElementById('root');
-  if (module.hot) {
-    module.hot.accept();
-  }
-
-  camera = new THREE.Camera();
-  camera.position.z = 1;
-
-  scene = new THREE.Scene();
-
   const geometry = new THREE.PlaneBufferGeometry(2, 2);
-
   uniforms = {
     u_time: { type: 'f', value: 1.0 },
     u_resolution: { type: 'v2', value: new THREE.Vector2() },
@@ -47,11 +35,23 @@ function init() {
     fragmentShader: frag,
   });
 
+  camera = new THREE.Camera();
+  camera.position.z = 1;
+
+  scene = new THREE.Scene();
+
   const mesh = new THREE.Mesh(geometry, material);
   scene.add(mesh);
 
   renderer = new THREE.WebGLRenderer();
   renderer.setPixelRatio(window.devicePixelRatio);
+
+
+  document.title = '👾 ✨ 🐳';
+  container = document.getElementById('root');
+  if (module.hot) {
+    module.hot.accept();
+  }
 
   container.appendChild(renderer.domElement);
 

@@ -1,3 +1,6 @@
+
+const images = require('@neutrinojs/image-loader');
+
 module.exports = {
   use: [
     '@neutrinojs/airbnb-base',
@@ -9,6 +12,7 @@ module.exports = {
         }
       }
     ],
-    '@neutrinojs/jest'
+    '@neutrinojs/jest',
+    images()
   ]
 };

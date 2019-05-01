@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import frag from './shaders/shaders.frag';
+import frag from './shaders/shaders-05.frag';
 import vert from './shaders/shaders.vert';
 import './styles.css';
 

@@ -22,6 +22,7 @@ function onWindowResize(event) {
 }
 
 function init() {
+  document.title = '👾 ✨ 🐳';
   container = document.getElementById('root');
   if (module.hot) {
     module.hot.accept();

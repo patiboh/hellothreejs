@@ -1,5 +1,6 @@
 import * as THREE from 'three';
-import frag from './shaders/shaders-05.frag';
+// import fragColor from './shaders/color.frag';
+import fragCurves from './shaders/curves.frag';
 import vert from './shaders/shaders.vert';
 import './styles.css';
 
@@ -32,7 +33,7 @@ function init() {
   const material = new THREE.ShaderMaterial({
     uniforms,
     vertexShader: vert,
-    fragmentShader: frag,
+    fragmentShader: fragCurves,
   });
 
   camera = new THREE.Camera();
@@ -47,7 +48,7 @@ function init() {
   renderer.setPixelRatio(window.devicePixelRatio);
 
 
-  document.title = '👾 ✨ 🐳';
+  document.title = '✨👾 🐳';
   container = document.getElementById('root');
   if (module.hot) {
     module.hot.accept();

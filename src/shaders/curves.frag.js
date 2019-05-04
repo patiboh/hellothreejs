@@ -18,18 +18,27 @@ float plot(vec2 coord, float pct){
 void main() {
     vec2 coord = gl_FragCoord.xy/u_resolution.xy;
     float x = coord.x;
-    float y = coord.x;
 
     //*** *** *** *** *** ***//
     // Straight curve
+    float y = coord.x;
 
     /// Change Angle 
-    y = coord.x * 2.0;
+    // y = coord.x * 2.0;
+
+    
+    //*** *** *** *** *** ***//
+    // Exponential  curve
+
+    y = pow(coord.x,5.0);
+    y = pow(1.0/coord.x,5.0);
+
+    // y = pow(coord.x/0.5,coord.y/0.5);
 
     //*** *** *** *** *** ***//
     // Sinus curve
 
-    y = sin(coord.x);
+    // y = sin(coord.x);
     
     /// Absolute value of sinus curve (all postive coordinates)
     // y = abs(sin(coord.x));
@@ -72,7 +81,7 @@ void main() {
     // y = step(0.3,coord.x);
     // y = smoothstep(0.01, 0.99,coord.x);
 
-    /// Symetrical curve on Three points
+    /// Symmetrical curve on three points
     // y = smoothstep(0.2,0.5,coord.x) - smoothstep(0.5,0.8,coord.x);
 
     //*** *** *** *** *** ***//
@@ -82,10 +91,15 @@ void main() {
     // y = abs(sin(coord.x*PI*sin(u_time)));
     // y = fract(sin(coord.x*PI*sin(u_time)));
     // y = ceil(sin(coord.x*PI*cos(u_time))) + floor(sin(coord.x*PI*cos(u_time)));
+    // y = pow(coord.x,coord.y/0.5 + 20.0/u_time);
+    // y = pow(coord.x*u_time,coord.y/0.5 + 20.0/u_time);
+    // y = pow(coord.x/u_time,coord.y/0.5 + 20.0/u_time);
+    // y = pow(coord.x/u_time,coord.y/0.5 + 5.0/u_time);
+    // y = pow(1.0/coord.x/u_time,coord.y/0.5 + 5.0/u_time);
 
     //*** *** *** *** *** ***//
     // Other GLSL functions
-    y = mod(x,0.5); // return x modulo of 0.5
+    // y = mod(x,0.5); // return x modulo of 0.5
     // y = fract(x); // return only the fraction part of a number
     // y = ceil(x);  // nearest integer that is greater than or equal to x
     // y = floor(x); // nearest integer less than or equal to x

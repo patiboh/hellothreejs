@@ -1,60 +1,51 @@
 import * as THREE from 'three';
-// import fragColor from './shaders/color.frag';
-import fragCurves from './shaders/curves.frag';
-import vert from './shaders/shaders.vert';
+
+import { uniforms, geometry, material, camera } from './xp/curves';
+// import { uniforms, geometry, material, light, camera } from './xp/images';
+
+
 import './styles.css';
 
 let container;
-let camera;
-let scene;
+let app;
 let renderer;
-let uniforms;
 
-function render() {
+const render = (_scene, _camera) => {
   uniforms.u_time.value += 0.05;
-  renderer.render(scene, camera);
-}
+  renderer.render(_scene, _camera);
+};
 
-// eslint-disable-next-line no-unused-vars
-function onWindowResize(event) {
+const animate = (_scene, _camera) => {
+  requestAnimationFrame(animate);
+  render(_scene, _camera);
+};
+
+// eslint-disable-nex =t-line no-unused-vars
+const onWindowResize = () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   uniforms.u_resolution.value.x = renderer.domElement.width;
   uniforms.u_resolution.value.y = renderer.domElement.height;
-}
+};
 
-function init() {
-  const geometry = new THREE.PlaneBufferGeometry(2, 2);
-  uniforms = {
-    u_time: { type: 'f', value: 1.0 },
-    u_resolution: { type: 'v2', value: new THREE.Vector2() },
-    u_mouse: { type: 'v2', value: new THREE.Vector2() },
-  };
+const scene = new THREE.Scene();
 
-  const material = new THREE.ShaderMaterial({
-    uniforms,
-    vertexShader: vert,
-    fragmentShader: fragCurves,
-  });
-
-  camera = new THREE.Camera();
-  camera.position.z = 1;
-
-  scene = new THREE.Scene();
-
-  const mesh = new THREE.Mesh(geometry, material);
+const init = (_uniforms, _geometry, _material, _light) => {
+  container = document.getElementById('root');
+  app = document.createElement('main');
+  const mesh = new THREE.Mesh(_geometry, _material);
   scene.add(mesh);
+  if (_light) scene.add(_light);
 
-  renderer = new THREE.WebGLRenderer();
+  renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setPixelRatio(window.devicePixelRatio);
 
-
   document.title = '✨👾 🐳';
-  container = document.getElementById('root');
   if (module.hot) {
     module.hot.accept();
   }
 
-  container.appendChild(renderer.domElement);
+  container.appendChild(app);
+  app.appendChild(renderer.domElement);
 
   onWindowResize();
   window.addEventListener('resize', onWindowResize, false);
@@ -63,12 +54,7 @@ function init() {
     uniforms.u_mouse.value.x = e.pageX;
     uniforms.u_mouse.value.y = e.pageY;
   };
-}
+};
 
-function animate() {
-  requestAnimationFrame(animate);
-  render();
-}
-
-init();
-animate();
+init(uniforms, geometry, material, null);
+animate(scene, camera);

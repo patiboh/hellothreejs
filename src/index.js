@@ -1,11 +1,11 @@
 import * as THREE from 'three';
 
-// import {
-//   uniforms, geometry, material, camera,
-// } from './xp/curves';
 import {
-  uniforms, geometry, material, light, camera,
-} from './xp/images';
+  uniforms, geometry, material, camera,
+} from './xp/curves';
+// import {
+//   uniforms, geometry, material, light, camera,
+// } from './xp/images';
 
 
 import './styles.css';
@@ -59,6 +59,6 @@ const animate = () => {
   render();
 };
 
-// init(geometry, material, null);
-init(geometry, material, light);
+init(geometry, material, null);
+// init(geometry, material, light);
 animate();

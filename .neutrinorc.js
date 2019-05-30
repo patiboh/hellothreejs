@@ -1,18 +1,23 @@
-
-const images = require('@neutrinojs/image-loader');
+const airbnbBase = require('@neutrinojs/airbnb-base');
+const web = require('@neutrinojs/web');
+const jest = require('@neutrinojs/jest');
+const copy = require('@neutrinojs/copy');
 
 module.exports = {
   use: [
-    '@neutrinojs/airbnb-base',
-    [
-      '@neutrinojs/web',
-      {
-        html: {
-          title: 'threejs'
-        }
+    airbnbBase(),
+    web({
+      html: {
+        title: 'threejs'
       }
-    ],
-    '@neutrinojs/jest',
-    // images()
+    }),
+    copy({
+      patterns: [{
+        context: 'src/static',
+        from: '**/*',
+        to: 'static',
+      }],
+    }),
+    jest()
   ]
 };

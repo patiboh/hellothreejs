@@ -4,8 +4,8 @@ WebGL / threejs hello worlds ✨
 
 To setup :
 
-`npm i`
+`yarn install`
 
 To see what happens :
 
-`npm start`
+`yarn start`

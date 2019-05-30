@@ -22,7 +22,7 @@ const onWindowResize = () => {
   uniforms.u_resolution.value.y = renderer.domElement.height;
 };
 
-const init = (_uniforms, _geometry, _material, _light) => {
+const init = (_geometry, _material, _light) => {
   container = document.getElementById('root');
   app = document.createElement('main');
   const mesh = new THREE.Mesh(_geometry, _material);
@@ -59,6 +59,6 @@ const animate = () => {
   render();
 };
 
-// init(uniforms, geometry, material, null);
-init(uniforms, geometry, material, light);
+// init(geometry, material, null);
+init(geometry, material, light);
 animate();

@@ -31,7 +31,7 @@ void main() {
     // Exponential  curve
 
     y = pow(coord.x,5.0);
-    y = pow(1.0/coord.x,5.0);
+    // y = pow(1.0/coord.x,5.0);
 
     // y = pow(coord.x/0.5,coord.y/0.5);
 
@@ -107,7 +107,7 @@ void main() {
     // y = abs(x);   // return the absolute value of x
     // y = clamp(x,0.0,1.0); // constrain x to lie between 0.0 and 1.0
     // y = min(0.0,x);   // return the lesser of x and 0.0
-    // y = max(0.0,x);   // return the greater of x and 0.0 
+   // y = max(0.0,x);   // return the greater of x and 0.0 
     
 
     //*** *** *** *** *** ***//

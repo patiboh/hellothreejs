@@ -1,7 +1,11 @@
 import * as THREE from 'three';
 
-import { uniforms, geometry, material, camera } from './xp/curves';
-// import { uniforms, geometry, material, light, camera } from './xp/images';
+// import {
+//   uniforms, geometry, material, camera,
+// } from './xp/curves';
+import {
+  uniforms, geometry, material, light, camera,
+} from './xp/images';
 
 
 import './styles.css';
@@ -9,16 +13,7 @@ import './styles.css';
 let container;
 let app;
 let renderer;
-
-const render = (_scene, _camera) => {
-  uniforms.u_time.value += 0.05;
-  renderer.render(_scene, _camera);
-};
-
-const animate = (_scene, _camera) => {
-  requestAnimationFrame(animate);
-  render(_scene, _camera);
-};
+const scene = new THREE.Scene();
 
 // eslint-disable-nex =t-line no-unused-vars
 const onWindowResize = () => {
@@ -26,8 +21,6 @@ const onWindowResize = () => {
   uniforms.u_resolution.value.x = renderer.domElement.width;
   uniforms.u_resolution.value.y = renderer.domElement.height;
 };
-
-const scene = new THREE.Scene();
 
 const init = (_uniforms, _geometry, _material, _light) => {
   container = document.getElementById('root');
@@ -56,5 +49,16 @@ const init = (_uniforms, _geometry, _material, _light) => {
   };
 };
 
-init(uniforms, geometry, material, null);
-animate(scene, camera);
+const render = () => {
+  uniforms.u_time.value += 0.05;
+  renderer.render(scene, camera);
+};
+
+const animate = () => {
+  requestAnimationFrame(animate);
+  render();
+};
+
+// init(uniforms, geometry, material, null);
+init(uniforms, geometry, material, light);
+animate();

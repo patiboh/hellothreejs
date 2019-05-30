@@ -40,13 +40,13 @@ const imagesCamera = () => {
 };
 
 // Add a point light with #fff color, .7 intensity, and 0 distance
-const light = () => {
-  const pointLight = new THREE.PointLight(0xffffff, 1, 0);
+const pointLight = () => {
+  const light = new THREE.PointLight(0xffffff, 1, 0);
   // Specify the light's position
-  pointLight.position.set(1, 1, 100);
-  return pointLight;
+  light.position.set(1, 1, 100);
+  return light;
 };
 
 export const material = imagesMaterial();
 export const camera = imagesCamera();
-export const pointLight = light();
+export const light = pointLight();

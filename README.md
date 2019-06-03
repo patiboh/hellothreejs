@@ -1,4 +1,4 @@
-# Threejs Playground
+# WebGL / Three JS Playground
 
 WebGL / threejs hello worlds ✨
 
@@ -9,3 +9,6 @@ To setup :
 To see what happens :
 
 `yarn start`
+
+
+I'm using this repo to explore computer graphics

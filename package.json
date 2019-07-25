@@ -11,6 +11,9 @@
     "test": "jest",
     "test:watch": "jest --watch"
   },
+  "peerDependencies": {
+    "lodash": "^4.17.15"
+  },
   "devDependencies": {
     "@neutrinojs/airbnb-base": "^9.0.0-rc.3",
     "@neutrinojs/copy": "^9.0.0-rc.3",

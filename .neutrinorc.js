@@ -1,11 +1,11 @@
-const airbnbBase = require('@neutrinojs/airbnb-base');
+const standardjs = require('@neutrinojs/standardjs');
 const web = require('@neutrinojs/web');
 const jest = require('@neutrinojs/jest');
 const copy = require('@neutrinojs/copy');
 
 module.exports = {
   use: [
-    airbnbBase(),
+    standardjs(), 
     web({
       html: {
         title: 'threejs'

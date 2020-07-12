@@ -5,19 +5,21 @@ const copy = require('@neutrinojs/copy');
 
 module.exports = {
   use: [
-    standardjs(), 
+    standardjs(),
     web({
       html: {
-        title: 'threejs'
-      }
+        title: 'threejs',
+      },
     }),
     copy({
-      patterns: [{
-        context: 'src/static',
-        from: '**/*',
-        to: 'static',
-      }],
+      patterns: [
+        {
+          context: 'src/static',
+          from: '**/*',
+          to: 'static',
+        },
+      ],
     }),
-    jest()
-  ]
+    jest(),
+  ],
 };

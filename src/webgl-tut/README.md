@@ -9,4 +9,3 @@ If you're looking for information on WebGL, and you haven't yet visited that sit
 To run this code you can run a python server inside this folder
 
 `python -m http.server`
-

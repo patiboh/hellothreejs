@@ -1,7 +1,7 @@
-const standardjs = require('@neutrinojs/standardjs');
-const web = require('@neutrinojs/web');
-const jest = require('@neutrinojs/jest');
-const copy = require('@neutrinojs/copy');
+const standardjs = require('@neutrinojs/standardjs')
+const web = require('@neutrinojs/web')
+const jest = require('@neutrinojs/jest')
+const copy = require('@neutrinojs/copy')
 
 module.exports = {
   use: [
@@ -22,4 +22,4 @@ module.exports = {
     }),
     jest(),
   ],
-};
+}

@@ -3,7 +3,6 @@
   "version": "0.0.2",
   "main": "index.js",
   "license": "BSD-3-Clause",
-  "eslintIgnore": ["src/webgl-tut/webglfundamentals*"],
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development --open",
@@ -13,13 +12,19 @@
     "test:watch": "jest --watch"
   },
   "devDependencies": {
-    "@neutrinojs/standardjs": "^9.2.0",
     "@neutrinojs/copy": "^9.2.0",
     "@neutrinojs/image-loader": "^9.2.0",
     "@neutrinojs/jest": "^9.2.0",
+    "@neutrinojs/standardjs": "^9.2.0",
     "@neutrinojs/web": "^9.2.0",
     "eslint": "^7.4.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "neutrino": "^9.2.0",
+    "standard": "^14.3.4",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"

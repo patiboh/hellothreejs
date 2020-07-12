@@ -1,6 +1,6 @@
 'use strict'
 
-function main () {
+function main() {
   // Get A WebGL context
   var canvas = document.querySelector('#c')
   var gl = canvas.getContext('webgl')
@@ -9,7 +9,10 @@ function main () {
   }
 
   // Use our boilerplate utils to compile the shaders and link into a program
-  var program = webglUtils.createProgramFromScripts(gl, ['vertex-shader-2d', 'fragment-shader-2d'])
+  var program = webglUtils.createProgramFromScripts(gl, [
+    'vertex-shader-2d',
+    'fragment-shader-2d',
+  ])
 
   // look up where the vertex data needs to go.
   var positionAttributeLocation = gl.getAttribLocation(program, 'a_position')
@@ -23,14 +26,7 @@ function main () {
   // Bind it to ARRAY_BUFFER (think of it as ARRAY_BUFFER = positionBuffer)
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer)
 
-  var positions = [
-    10, 20,
-    80, 20,
-    10, 30,
-    10, 30,
-    80, 20,
-    80, 30
-  ]
+  var positions = [10, 20, 80, 20, 10, 30, 10, 30, 80, 20, 80, 30]
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW)
 
   webglUtils.resizeCanvasToDisplaySize(gl.canvas)
@@ -58,7 +54,13 @@ function main () {
   var stride = 0 // 0 = move forward size * sizeof(type) each iteration to get the next position
   var offset = 0 // start at the beginning of the buffer
   gl.vertexAttribPointer(
-    positionAttributeLocation, size, type, normalize, stride, offset)
+    positionAttributeLocation,
+    size,
+    type,
+    normalize,
+    stride,
+    offset,
+  )
 
   // set the resolution
   gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height)

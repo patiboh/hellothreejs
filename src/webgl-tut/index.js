@@ -131,13 +131,23 @@ function main() {
   ]
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW)
 
+  gl.useProgram(program) // sets uniforms to be bound to the current program
   const resolutionUniformLocation = gl.getUniformLocation(
     program,
     'u_resolution'
   )
-  gl.useProgram(program) // sets uniforms to be bound to the current program
   // bind u_resolution
   gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height)
+
+  const colorUniformLocation = gl.getUniformLocation(program, 'u_color')
+  // bind u_color
+  gl.uniform4f(
+    colorUniformLocation,
+    Math.random(),
+    Math.random(),
+    Math.random(),
+    1
+  )
 
   /************************
    * RENDERING CODE

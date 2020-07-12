@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "main": "index.js",
   "license": "BSD-3-Clause",
+  "eslintIgnore": ["src/webgl-tut/webglfundamentals*"],
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development --open",

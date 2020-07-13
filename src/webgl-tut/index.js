@@ -19,8 +19,8 @@ function setRectangle(gl, x, y, width, height) {
   gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
     x1, y1,
     x2, y1,
-    x2, y2,
-    x2, y2,
+    x1, y2,
+    x1, y2,
     x2, y1,
     x2, y2,
   ]), gl.STATIC_DRAW)
@@ -67,6 +67,11 @@ function resizeHD(gl) {
   }
 }
 
+// Returns a random integer from 0 to range - 1.
+function randomInt(range) {
+  return Math.floor(Math.random() * range)
+}
+
 /**
  * @param {WebGLRenderingContext} gl
  * @param {number} type
@@ -85,7 +90,7 @@ function createShader(gl, type, source) {
 }
 
 /**
- *
+ * Link shaders to WebGL rendering context
  * @param {WebGLRenderingContext} gl
  * @param {WebGLShader} vertexShader
  * @param {WebGLShader} fragmentShader
@@ -103,6 +108,40 @@ function createProgram(gl, vertexShader, fragmentShader) {
 
   console.error('💩 Could not compile shader \n\n')
   gl.deleteProgram(program)
+}
+
+/**
+ * @param {WebGLRenderingContext} gl
+ * @param {WebGLProgram} program
+ * @param {number} count number of rectangles to draw
+ */
+function drawRectangles(gl, program, count) {
+  const colorUniformLocation = gl.getUniformLocation(program, 'u_color')
+  // draw 50 random rectangles in random colors
+  for (let index = 0; index < count; ++index) {
+    // Setup a random rectangle
+    // This will write to positionBuffer because
+    // its the last thing we bound on the ARRAY_BUFFER
+    // bind point
+    setRectangle(
+      gl,
+      randomInt(300),
+      randomInt(300),
+      randomInt(300),
+      randomInt(300),
+    )
+
+    // Set a random color.
+    gl.uniform4f(
+      colorUniformLocation,
+      Math.random(),
+      Math.random(),
+      Math.random(),
+      1,
+    )
+    // Draw the rectangle.
+    gl.drawArrays(gl.TRIANGLES, 0, 6)
+  }
 }
 
 function main() {
@@ -188,11 +227,6 @@ function main() {
     Math.random(),
     1,
   )
-
-  /************************
-   * RENDERING CODE
-   * Code that gets executed every time we draw
-   ************************/
   // 6. Setup canvas
   // - resize canvas to fit screen display
   resize(canvas)
@@ -231,15 +265,20 @@ function main() {
     offset,
   )
 
+  /************************
+   * RENDERING CODE
+   * Code that gets executed every time we draw
+   ************************/
   // 9. Draw !
   // WebGL has 3 types of primitives: points, lines, and triangles
-  const primitiveType = gl.TRIANGLES // each iteration, WebGL will draw a triangle based on the values set in gl_Position
-  const count = 6 // number of times the shader will execute: 3
+  // const primitiveType = gl.TRIANGLES // each iteration, WebGL will draw a triangle based on the values set in gl_Position
+  // const count = 6 // number of times the shader will execute: 3
   // 1st Iteration: a_position.x & a_position.y of the vertex shader will be set to the first 2 values in the positionBuffer
   // 2nd Iteration: a_position.x & a_position.y => next pair of values of positionBuffer
   // 3rd Iteration: a_position.x & a_position.y => next (last) pair of values of positionBuffer
-  offset = 0
-  gl.drawArrays(primitiveType, offset, count)
+  // offset = 0
+  // gl.drawArrays(primitiveType, offset, count)
+  drawRectangles(gl, program, 6)
 }
 
 main()

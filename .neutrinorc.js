@@ -5,7 +5,11 @@ const copy = require('@neutrinojs/copy')
 
 module.exports = {
   use: [
-    standardjs(),
+    standardjs({
+      eslint: {
+        useEslintrc: true,
+      },
+    }),
     web({
       html: {
         title: 'threejs',

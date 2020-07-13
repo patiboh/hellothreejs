@@ -59,7 +59,7 @@ function main() {
     type,
     normalize,
     stride,
-    offset
+    offset,
   )
 
   // set the resolution

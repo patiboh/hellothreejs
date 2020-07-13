@@ -2,6 +2,6 @@
   "bracketSpacing": false,
   "singleQuote": true,
   "semi": false,
-  "trailingComma": "es5",
+  "trailingComma": "all",
   "arrowParens": "always"
 }

@@ -199,6 +199,8 @@ function main() {
   // - tell WebGL how to covert clip space values for gl_Position back into screen space (pixels)
   // -> use gl.viewport
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
+  // set the resolution
+  gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height)
 
   // Clear the canvas
   gl.clearColor(0, 0, 0, 0)
@@ -228,9 +230,6 @@ function main() {
     stride,
     offset,
   )
-
-  // set the resolution
-  gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height)
 
   // 9. Draw !
   // WebGL has 3 types of primitives: points, lines, and triangles

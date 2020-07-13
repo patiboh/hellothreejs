@@ -58,12 +58,12 @@
     console.log(
       '%c%s',
       'color:blue;font-weight:bold;',
-      'for more about webgl-utils.js see:'
+      'for more about webgl-utils.js see:',
     ) // eslint-disable-line
     console.log(
       '%c%s',
       'color:blue;font-weight:bold;',
-      'https://webglfundamentals.org/webgl/lessons/webgl-boilerplate.html'
+      'https://webglfundamentals.org/webgl/lessons/webgl-boilerplate.html',
     ) // eslint-disable-line
   }
 
@@ -135,7 +135,7 @@
     shaders,
     opt_attribs,
     opt_locations,
-    opt_errorCallback
+    opt_errorCallback,
   ) {
     const errFn = opt_errorCallback || error
     const program = gl.createProgram()
@@ -147,7 +147,7 @@
         gl.bindAttribLocation(
           program,
           opt_locations ? opt_locations[ndx] : ndx,
-          attrib
+          attrib,
         )
       })
     }
@@ -179,7 +179,7 @@
     gl,
     scriptId,
     opt_shaderType,
-    opt_errorCallback
+    opt_errorCallback,
   ) {
     let shaderSource = ''
     let shaderType
@@ -206,7 +206,7 @@
       gl,
       shaderSource,
       opt_shaderType || shaderType,
-      opt_errorCallback
+      opt_errorCallback,
     )
   }
 
@@ -232,7 +232,7 @@
     shaderScriptIds,
     opt_attribs,
     opt_locations,
-    opt_errorCallback
+    opt_errorCallback,
   ) {
     const shaders = []
     for (let ii = 0; ii < shaderScriptIds.length; ++ii) {
@@ -241,8 +241,8 @@
           gl,
           shaderScriptIds[ii],
           gl[defaultShaderType[ii]],
-          opt_errorCallback
-        )
+          opt_errorCallback,
+        ),
       )
     }
     return createProgram(
@@ -250,7 +250,7 @@
       shaders,
       opt_attribs,
       opt_locations,
-      opt_errorCallback
+      opt_errorCallback,
     )
   }
 
@@ -274,7 +274,7 @@
     shaderSources,
     opt_attribs,
     opt_locations,
-    opt_errorCallback
+    opt_errorCallback,
   ) {
     const shaders = []
     for (let ii = 0; ii < shaderSources.length; ++ii) {
@@ -283,8 +283,8 @@
           gl,
           shaderSources[ii],
           gl[defaultShaderType[ii]],
-          opt_errorCallback
-        )
+          opt_errorCallback,
+        ),
       )
     }
     return createProgram(
@@ -292,7 +292,7 @@
       shaders,
       opt_attribs,
       opt_locations,
-      opt_errorCallback
+      opt_errorCallback,
     )
   }
 
@@ -587,7 +587,7 @@
               break
             default:
               throw new Error(
-                'the length of a float constant value must be between 1 and 4!'
+                'the length of a float constant value must be between 1 and 4!',
               )
           }
         } else {
@@ -599,7 +599,7 @@
             b.type || gl.FLOAT,
             b.normalize || false,
             b.stride || 0,
-            b.offset || 0
+            b.offset || 0,
           )
         }
       }
@@ -719,7 +719,7 @@
       gl,
       programInfo.attribSetters || programInfo,
       bufferInfo.attribs,
-      bufferInfo.indices
+      bufferInfo.indices,
     )
   }
 
@@ -759,7 +759,7 @@
     shaderSources,
     opt_attribs,
     opt_locations,
-    opt_errorCallback
+    opt_errorCallback,
   ) {
     shaderSources = shaderSources.map(function (source) {
       const script = document.getElementById(source)
@@ -770,7 +770,7 @@
       shaderSources,
       opt_attribs,
       opt_locations,
-      opt_errorCallback
+      opt_errorCallback,
     )
     if (!program) {
       return null
@@ -928,7 +928,7 @@
     const Type = opt_type || Float32Array
     return augmentTypedArray(
       new Type(numComponents * numElements),
-      numComponents
+      numComponents,
     )
   }
 
@@ -1040,7 +1040,7 @@
     const typedArray = createAugmentedTypedArray(
       array.numComponents,
       (array.data.length / array.numComponents) | 0,
-      type
+      type,
     )
     typedArray.push(array.data)
     return typedArray
@@ -1132,7 +1132,7 @@
 
     if (length % numComponents > 0) {
       throw new Error(
-        `Can not guess numComponents for attribute '${name}'. Tried ${numComponents} but ${length} values is not evenly divisible by ${numComponents}. You should specify it.`
+        `Can not guess numComponents for attribute '${name}'. Tried ${numComponents} but ${length} values is not evenly divisible by ${numComponents}. You should specify it.`,
       )
     }
 
@@ -1166,7 +1166,7 @@
     const numElements = length / numComponents
     if (length % numComponents > 0) {
       throw new Error(
-        `numComponents ${numComponents} not correct for length ${length}`
+        `numComponents ${numComponents} not correct for length ${length}`,
       )
     }
     return numElements
@@ -1311,7 +1311,7 @@
       bufferInfo.indices = createBufferFromTypedArray(
         gl,
         indices,
-        gl.ELEMENT_ARRAY_BUFFER
+        gl.ELEMENT_ARRAY_BUFFER,
       )
       bufferInfo.numElements = indices.length
     } else {

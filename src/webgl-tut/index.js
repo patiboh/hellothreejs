@@ -134,7 +134,7 @@ function main() {
   gl.useProgram(program) // sets uniforms to be bound to the current program
   const resolutionUniformLocation = gl.getUniformLocation(
     program,
-    'u_resolution'
+    'u_resolution',
   )
   // bind u_resolution
   gl.uniform2f(resolutionUniformLocation, gl.canvas.width, gl.canvas.height)
@@ -146,7 +146,7 @@ function main() {
     Math.random(),
     Math.random(),
     Math.random(),
-    1
+    1,
   )
 
   /************************
@@ -193,7 +193,7 @@ function main() {
     type,
     normalize,
     stride,
-    offset
+    offset,
   )
 
   // WebGL has 3 types of primitives: points, lines, and triangles

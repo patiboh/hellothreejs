@@ -152,13 +152,13 @@ function main() {
   utils.updateCursor(this, 0x1f4a5, 'SM')
 
   Array.from(confetti).map((element) => {
-    if (element.classList.contains('curtain-call')) {
-      element.classList.toggle('curtain-call')
+    if (element.classList.contains('yay')) {
+      element.classList.toggle('yay')
     }
   })
   window.setTimeout(() => {
     Array.from(confetti).map((element) => {
-      element.classList.toggle('curtain-call')
+      element.classList.toggle('yay')
     })
     // this = animate button
     utils.updateCursor(this, 0x26a1, 'SM')

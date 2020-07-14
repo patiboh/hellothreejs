@@ -44,7 +44,7 @@ export function drawRectangles(gl, program, count) {
     // This will write to positionBuffer because
     // its the last thing we bound on the ARRAY_BUFFER
     // bind point
-    draw.setRectangle(
+    setRectangle(
       gl,
       utils.randomInt(300),
       utils.randomInt(300),

@@ -31,6 +31,8 @@ function main() {
   const fragmentShaderSrc = /** @type {HTMLScriptElement} */ (document.getElementById(
     'fragment-shader-2d',
   )).text
+  const confetti = document.getElementsByClassName('confetti')
+  const poop = document.getElementsByClassName('poop')
 
   try {
     const vertexShader = utilsWebGl.createShader(
@@ -148,14 +150,18 @@ function main() {
       gl.drawArrays(primitiveType, offset, count)
     }, 1)
 
-    const confetti = document.getElementsByClassName('confetti')
-    utils.updateCursor(document.body, 0x1f4ab, 'LG')
+    utils.updateCursor(document.body, 0x2728, 'LG') // ✨ sparkles
     // this = animate button
-    utils.updateCursor(this, 0x1f4a5, 'SM')
+    utils.updateCursor(this, 0x1f4a5, 'SM') // 💥 fire spark
 
     Array.from(confetti).map((element) => {
       if (element.classList.contains('yay')) {
         element.classList.toggle('yay')
+      }
+    })
+    Array.from(poop).map((element) => {
+      if (element.classList.contains('nay')) {
+        element.classList.toggle('nay')
       }
     })
     window.setTimeout(() => {
@@ -163,14 +169,19 @@ function main() {
         element.classList.toggle('yay')
       })
       // this = animate button
-      utils.updateCursor(this, 0x26a1, 'SM')
+      utils.updateCursor(this, 0x1f64c, 'SM') // 🙌 raised hands
       window.clearInterval(rectangularFireworks)
     }, 1000)
   } catch (error) {
-    utils.updateCursor(document.body, 0x1f4a9, 'LG')
+    Array.from(poop).map((element) => {
+      element.classList.toggle('nay')
+    })
+    utils.updateCursor(document.body, 0x1f47b, 'LG') // 👻 ghost
+    utils.updateCursor(animate, 0x1f52b, 'SM') // 🔫 water pistol
     console.error(error)
   }
 }
-utils.updateCursor(document.body, 0x1f941, 'LG')
+utils.updateCursor(document.body, 0x1f941, 'LG') // 🥁 drums
 const animate = document.getElementById('animate')
+utils.updateCursor(animate, 0x26a1, 'SM') // ⚡️ lightning
 animate.addEventListener('click', main)

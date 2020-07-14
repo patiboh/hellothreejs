@@ -38,7 +38,6 @@
       .fire-starter::before {
         position: absolute;
         content: '\1F47E';
-        color: white;
         font-size: 10rem;
         width: 100%;
         height: 100%;
@@ -73,11 +72,37 @@
         animation-timing-function: ease-in-out;
         animation-delay: 0.8s;
       }
+      .nay.poop1 {
+        animation: horizontal 2s infinite, vertical 3.9s infinite;
+        animation-timing-function: ease-in-out;
+        animation-delay: 0.6s;
+      }
+      .nay.poop2 {
+        animation: horizontal1 2s infinite, vertical 4.6s infinite;
+        animation-timing-function: ease-in-out;
+        animation-delay: 0.5s;
+      }
+      .nay.poop3 {
+        animation: horizontal2 2s infinite, vertical 5s infinite;
+        animation-timing-function: ease-in-out;
+        animation-delay: 0.1s;
+      }
+      .nay.poop4 {
+        animation: horizontal3 2s infinite, vertical 4.3s infinite;
+        animation-timing-function: ease-in-out;
+        animation-delay: 0.3s;
+      }
+      .nay.poop5 {
+        animation: horizontal4 2s infinite, vertical 4s infinite;
+        animation-timing-function: ease-in-out;
+        animation-delay: 0.8s;
+      }
       .tada,
       .star,
       .balloon,
       .confetti-ball,
-      .party-face {
+      .party-face,
+      .poop {
         position: absolute;
         top: -4rem;
         z-index: 2;
@@ -100,6 +125,21 @@
       .party-face {
         left: 70%;
       }
+      .poop1 {
+        left: 10%;
+      }
+      .poop2 {
+        left: 50%;
+      }
+      .poop3 {
+        left: 80%;
+      }
+      .poop4 {
+        left: 30%;
+      }
+      .poop5 {
+        left: 70%;
+      }
       .tada::before {
         position: absolute;
         content: '\1F389';
@@ -119,6 +159,10 @@
       .party-face::before {
         position: absolute;
         content: '\1F973';
+      }
+      .poop::before {
+        position: absolute;
+        content: '\1F4A9';
       }
       @keyframes horizontal {
         0% {
@@ -276,11 +320,16 @@
         class="fire-starter"
         name="Animate"
       ></button>
-      <span class="tada confetti" aria-hidden></span>
-      <span class="star confetti" aria-hidden></span>
-      <span class="balloon confetti" aria-hidden></span>
-      <span class="confetti-ball confetti" aria-hidden></span>
-      <span class="party-face confetti" aria-hidden></span>
+      <span class="confetti tada" aria-hidden></span>
+      <span class="confetti star" aria-hidden></span>
+      <span class="confetti balloon" aria-hidden></span>
+      <span class="confetti confetti-ball" aria-hidden></span>
+      <span class="confetti party-face" aria-hidden></span>
+      <span class="poop poop1" aria-hidden></span>
+      <span class="poop poop2" aria-hidden></span>
+      <span class="poop poop3" aria-hidden></span>
+      <span class="poop poop4" aria-hidden></span>
+      <span class="poop poop5" aria-hidden></span>
     </div>
     <canvas id="canvas" title="Animated content"></canvas>
     <script id="vertex-shader-2d" type="notjs">

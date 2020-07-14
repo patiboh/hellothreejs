@@ -1,0 +1,24 @@
+{
+  "name": "threejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "BSD-3-Clause",
+  "scripts": {
+    "build": "neutrino build",
+    "start": "neutrino start",
+    "lint": "neutrino lint",
+    "test": "neutrino test"
+  },
+  "eslint.options": {
+    "configFile": ".eslintrc.js"
+  },
+  "devDependencies": {
+    "@neutrinojs/airbnb-base": "^8.3.0",
+    "@neutrinojs/jest": "^8.3.0",
+    "@neutrinojs/web": "^8.3.0",
+    "neutrino": "^8.3.0"
+  },
+  "dependencies": {
+    "three": "^0.104.0"
+  }
+}

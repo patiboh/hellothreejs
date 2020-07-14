@@ -310,39 +310,13 @@ function main() {
   )
 
   Array.from(confetti).map((element) => {
-    if (element.classList.contains('curtain-call-tada')) {
-      element.classList.toggle('curtain-call-tada')
-    }
-    if (element.classList.contains('curtain-call-star')) {
-      element.classList.toggle('curtain-call-star')
-    }
-    if (element.classList.contains('curtain-call-balloon')) {
-      element.classList.toggle('curtain-call-balloon')
-    }
-    if (element.classList.contains('curtain-call-confetti-ball')) {
-      element.classList.toggle('curtain-call-confetti-ball')
-    }
-    if (element.classList.contains('curtain-call-party-face')) {
-      element.classList.toggle('curtain-call-party-face')
+    if (element.classList.contains('curtain-call')) {
+      element.classList.toggle('curtain-call')
     }
   })
   window.setTimeout(() => {
     Array.from(confetti).map((element) => {
-      if (element.classList.contains('tada')) {
-        element.classList.toggle('curtain-call-tada')
-      }
-      if (element.classList.contains('star')) {
-        element.classList.toggle('curtain-call-star')
-      }
-      if (element.classList.contains('balloon')) {
-        element.classList.toggle('curtain-call-balloon')
-      }
-      if (element.classList.contains('confetti-ball')) {
-        element.classList.toggle('curtain-call-confetti-ball')
-      }
-      if (element.classList.contains('party-face')) {
-        element.classList.toggle('curtain-call-party-face')
-      }
+      element.classList.toggle('curtain-call')
     })
     // this = animate button
     this.style.cursor = customCursor_SM.replace(

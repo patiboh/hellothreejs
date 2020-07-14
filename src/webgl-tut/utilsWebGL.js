@@ -18,8 +18,10 @@ export function createShader(gl, type, source) {
   if (success) {
     return shader
   }
-  console.error('💩 Could not compile shader \n\n', gl.getShaderInfoLog(shader))
+  const error = `Could not compile shader \n\n${gl.getShaderInfoLog(shader)}`
   gl.deleteShader(shader)
+
+  throw error
 }
 
 /**
@@ -36,10 +38,11 @@ export function createProgram(gl, vertexShader, fragmentShader) {
 
   const success = gl.getProgramParameter(program, gl.LINK_STATUS)
   if (success) {
-    console.log('🎉 Rectangular fireworks! Yay! \n\n')
     return program
   }
 
-  console.error('💩 Could not compile shader \n\n')
+  const error = `Could not compile program \n\n${gl.getShaderInfoLog(program)}`
   gl.deleteProgram(program)
+
+  throw error
 }

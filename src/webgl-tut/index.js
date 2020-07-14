@@ -170,6 +170,8 @@ function main() {
       })
       // this = animate button
       utils.updateCursor(this, 0x1f64c, 'SM') // 🙌 raised hands
+      this.classList.toggle('active')
+      this.blur()
       window.clearInterval(rectangularFireworks)
     }, 1000)
   } catch (error) {
@@ -178,6 +180,8 @@ function main() {
     })
     utils.updateCursor(document.body, 0x1f47b, 'LG') // 👻 ghost
     utils.updateCursor(animate, 0x1f52b, 'SM') // 🔫 water pistol
+    this.classList.toggle('active')
+    this.classList.toggle('error')
     console.error(error)
   }
 }

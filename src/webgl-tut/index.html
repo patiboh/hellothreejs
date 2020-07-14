@@ -34,6 +34,8 @@
         left: 70%;
         background: none;
         border: none;
+        scale: 0.95;
+        transition: scale 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       }
       .fire-starter::before {
         position: absolute;
@@ -43,9 +45,11 @@
         height: 100%;
         z-index: 1;
       }
-      .fire-starter:hover {
+      .fire-starter:hover,
+      .fire-starter:focus {
         cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="60" style="font-size: 40px;"><text y="40">%E2%9A%A1</text></svg>'),
           auto;
+        scale: 1;
       }
       .yay.tada {
         animation: horizontal 2s infinite, vertical 3.9s infinite;

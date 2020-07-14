@@ -1,8 +1,17 @@
 // @ts-check
 /**
- * **********************
+ ***********************
  * HELPER FUNCTIONS
- * **********************
+ ***********************
+ */
+
+const customCursor_LG =
+  'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="120" style="font-size: 100px;"><text y="100">REPL</text></svg>\'), auto'
+
+const customCursor_SM =
+  'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="60" style="font-size: 40px;"><text y="40">REPL</text></svg>\'), auto'
+
+/**
  * @param {WebGLRenderingContext} gl
  * @param {number} x coordinate
  * @param {number} y coordinate
@@ -103,6 +112,7 @@ function createProgram(gl, vertexShader, fragmentShader) {
 
   const success = gl.getProgramParameter(program, gl.LINK_STATUS)
   if (success) {
+    console.log('🎉 Rectangular fireworks! Yay! \n\n')
     return program
   }
 
@@ -144,6 +154,8 @@ function drawRectangles(gl, program, count) {
   }
 }
 
+function drawScene() {}
+
 function main() {
   /************************
    * INITIALIZATION CODE
@@ -154,8 +166,8 @@ function main() {
   /**
    * @type {HTMLCanvasElement}
    */
-  const canvas = /** @type {HTMLCanvasElement} */ (document.querySelector(
-    '#canvas',
+  const canvas = /** @type {HTMLCanvasElement} */ (document.getElementById(
+    'canvas',
   ))
   const gl = canvas.getContext('webgl')
 
@@ -166,11 +178,11 @@ function main() {
   // 2. Initialize shaders : 2 programs that are executed each time a pixel is rendered
   // - Vertex Shader = returns pixel position
   // - Fragment Shader = returns pixel color
-  const vertexShaderSrc = /** @type {HTMLScriptElement} */ (document.querySelector(
-    '#vertex-shader-2d',
+  const vertexShaderSrc = /** @type {HTMLScriptElement} */ (document.getElementById(
+    'vertex-shader-2d',
   )).text
-  const fragmentShaderSrc = /** @type {HTMLScriptElement} */ (document.querySelector(
-    '#fragment-shader-2d',
+  const fragmentShaderSrc = /** @type {HTMLScriptElement} */ (document.getElementById(
+    'fragment-shader-2d',
   )).text
 
   const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSrc)
@@ -278,7 +290,71 @@ function main() {
   // 3rd Iteration: a_position.x & a_position.y => next (last) pair of values of positionBuffer
   // offset = 0
   // gl.drawArrays(primitiveType, offset, count)
-  drawRectangles(gl, program, 6)
-}
 
-main()
+  // let repl_cursor =
+  //   'url(\'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="30" style="font-size: 20px;"><text id="gText_11081308229940" name="-1" x="790.251953" y="-631.9517" font="Arial" rotate="0" horizAnchor="middle" vertAnchor="middle" scale="4,4" width="1" stroke="0x000000">&#x0048;&#x0045;&#x004C;&#x004C;&#x004F;&#x0020;&#x0057;&#x004F;&#x0052;&#x004C;&#x0044;&#x0021;&#x0021;&#x0021;&#x0021;</text></svg>\'), auto'
+  // document.body.style.cursor = repl_cursor
+
+  const rectangularFireworks = window.setInterval(() => {
+    drawRectangles(gl, program, 6)
+  }, 1)
+  const confetti = document.getElementsByClassName('confetti')
+  document.body.style.cursor = customCursor_LG.replace(
+    'REPL',
+    String.fromCodePoint(0x1f4ab),
+  )
+  // this = animate button
+  this.style.cursor = customCursor_SM.replace(
+    'REPL',
+    String.fromCodePoint(0x1f4a5),
+  )
+
+  Array.from(confetti).map((element) => {
+    if (element.classList.contains('curtain-call-tada')) {
+      element.classList.toggle('curtain-call-tada')
+    }
+    if (element.classList.contains('curtain-call-star')) {
+      element.classList.toggle('curtain-call-star')
+    }
+    if (element.classList.contains('curtain-call-balloon')) {
+      element.classList.toggle('curtain-call-balloon')
+    }
+    if (element.classList.contains('curtain-call-confetti-ball')) {
+      element.classList.toggle('curtain-call-confetti-ball')
+    }
+    if (element.classList.contains('curtain-call-party-face')) {
+      element.classList.toggle('curtain-call-party-face')
+    }
+  })
+  window.setTimeout(() => {
+    Array.from(confetti).map((element) => {
+      if (element.classList.contains('tada')) {
+        element.classList.toggle('curtain-call-tada')
+      }
+      if (element.classList.contains('star')) {
+        element.classList.toggle('curtain-call-star')
+      }
+      if (element.classList.contains('balloon')) {
+        element.classList.toggle('curtain-call-balloon')
+      }
+      if (element.classList.contains('confetti-ball')) {
+        element.classList.toggle('curtain-call-confetti-ball')
+      }
+      if (element.classList.contains('party-face')) {
+        element.classList.toggle('curtain-call-party-face')
+      }
+    })
+    // this = animate button
+    this.style.cursor = customCursor_SM.replace(
+      'REPL',
+      String.fromCodePoint(0x26a1),
+    )
+    window.clearInterval(rectangularFireworks)
+  }, 1000)
+}
+document.body.style.cursor = customCursor_LG.replace(
+  'REPL',
+  String.fromCodePoint(0x1f941),
+)
+const animate = document.getElementById('animate')
+animate.addEventListener('click', main)

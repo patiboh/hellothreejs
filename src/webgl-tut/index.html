@@ -11,17 +11,275 @@
         border: 0;
         margin: 0;
         background-color: black;
+        position: relative;
       }
       /* Stretch canvas to fill viewport */
       canvas {
+        display: block;
         width: 100vw;
         height: 100vh;
-        display: block;
+      }
+      .overlay {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        background: none;
+      }
+      .firestarter {
+        position: absolute;
+        top: 70%;
+        left: 70%;
+        background: none;
+        border: none;
+      }
+      .firestarter::before {
+        position: absolute;
+        content: '\1F47E';
+        color: white;
+        font-size: 10rem;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+      .firestarter:hover {
+        cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="60" style="font-size: 40px;"><text y="40">%E2%9A%A1</text></svg>'),
+          auto;
+      }
+      .curtain-call-tada {
+        animation: horizontal 2s infinite, vertical 5s infinite;
+        animation-timing-function: ease-in-out;
+      }
+      .curtain-call-star {
+        animation: horizontal1 2s infinite, vertical 5s infinite;
+        animation-timing-function: ease-in-out;
+      }
+      .curtain-call-balloon {
+        animation: horizontal2 2s infinite, vertical 5s infinite;
+        animation-timing-function: ease-in-out;
+      }
+      .curtain-call-confetti-ball {
+        animation: horizontal3 2s infinite, vertical 5s infinite;
+        animation-timing-function: ease-in-out;
+      }
+      .curtain-call-party-face {
+        animation: horizontal4 2s infinite, vertical 5s infinite;
+        animation-timing-function: ease-in-out;
+      }
+      .tada,
+      .star,
+      .balloon,
+      .confetti-ball,
+      .party-face {
+        position: absolute;
+        top: -4rem;
+        z-index: 2;
+        width: 30px;
+        height: 30px;
+        font-size: 3rem;
+      }
+      .tada {
+        animation-delay: 0.1s;
+        left: 10%;
+      }
+      .star {
+        animation-delay: 0.2s;
+        left: 50%;
+      }
+      .balloon {
+        left: 80%;
+        animation-delay: 0.5s;
+      }
+      .confetti-ball {
+        left: 30%;
+        animation-delay: 0.3s;
+      }
+      .party-face {
+        left: 70%;
+        animation-delay: 0.4s;
+      }
+      .tada::before {
+        position: absolute;
+        content: '\1F389';
+      }
+      .star::before {
+        position: absolute;
+        content: '\1F31F';
+      }
+      .balloon::before {
+        position: absolute;
+        content: '\1F388';
+      }
+      .confetti-ball::before {
+        position: absolute;
+        content: '\1F38A';
+      }
+      .party-face::before {
+        position: absolute;
+        content: '\1F973';
+      }
+      @keyframes horizontal {
+        0% {
+          left: 20%;
+        }
+        20% {
+          left: 22%;
+        }
+        30% {
+          left: 20%;
+        }
+        50% {
+          left: 18%;
+        }
+        60% {
+          left: 20%;
+        }
+        80% {
+          left: 23%;
+        }
+        100% {
+          left: 20%;
+        }
+      }
+      @keyframes horizontal1 {
+        0% {
+          left: 50%;
+        }
+        20% {
+          left: 53%;
+        }
+        30% {
+          left: 50%;
+        }
+        50% {
+          left: 46%;
+        }
+        65% {
+          left: 50%;
+        }
+        80% {
+          left: 54%;
+        }
+        100% {
+          left: 50%;
+        }
+      }
+      @keyframes horizontal2 {
+        0% {
+          left: 80%;
+        }
+        20% {
+          left: 85%;
+        }
+        30% {
+          left: 80%;
+        }
+        50% {
+          left: 75%;
+        }
+        60% {
+          left: 80%;
+        }
+        80% {
+          left: 85%;
+        }
+        100% {
+          left: 80%;
+        }
+      }
+      @keyframes horizontal3 {
+        0% {
+          left: 60%;
+        }
+        20% {
+          left: 63%;
+        }
+        30% {
+          left: 59%;
+        }
+        50% {
+          left: 56%;
+        }
+        60% {
+          left: 58%;
+        }
+        80% {
+          left: 62%;
+        }
+        100% {
+          left: 60%;
+        }
+      }
+      @keyframes horizontal4 {
+        0% {
+          left: 30%;
+        }
+        20% {
+          left: 33%;
+        }
+        30% {
+          left: 29%;
+        }
+        50% {
+          left: 24%;
+        }
+        60% {
+          left: 27%;
+        }
+        80% {
+          left: 31%;
+        }
+        100% {
+          left: 28%;
+        }
+      }
+      @keyframes vertical {
+        0% {
+          top: 0;
+        }
+        20% {
+          top: 20%;
+        }
+        30% {
+          top: 30%;
+        }
+        50% {
+          top: 50%;
+        }
+        60% {
+          top: 60%;
+        }
+        80% {
+          top: 80%;
+        }
+        100% {
+          top: 100%;
+        }
+      }
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
       }
     </style>
   </head>
   <body>
-    <canvas id="canvas"></canvas>
+    <div id="curtain" class="overlay">
+      <button
+        id="animate"
+        type="button"
+        class="firestarter"
+        name="Animate"
+      ></button>
+      <span class="tada confetti" aria-hidden></span>
+      <span class="star confetti" aria-hidden></span>
+      <span class="balloon confetti" aria-hidden></span>
+      <span class="confetti-ball confetti" aria-hidden></span>
+      <span class="party-face confetti" aria-hidden></span>
+    </div>
+    <canvas id="canvas" title="Animated content"></canvas>
     <script id="vertex-shader-2d" type="notjs">
       // an attribute will receive data from a buffer
       // attribute vec4 a_position; vec4 not necessary for 2D

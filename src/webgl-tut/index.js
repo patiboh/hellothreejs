@@ -121,8 +121,6 @@ function main() {
       colorUniformLocation,
       positionBuffer,
     )
-    // Setup a rectangle
-    draw.setRectangle(gl, translation[0], translation[1], width, height) // set the color
 
     const size = 2 // 2 components per iteration
     const type = gl.FLOAT // the data is in 32bit floats
@@ -147,12 +145,14 @@ function main() {
     offset = 0
     var count = 6
     const rectangularFireworks = window.setInterval(() => {
-      gl.drawArrays(primitiveType, offset, count)
+      // Setup a rectangle
+      draw.drawRectangles(gl, colorUniformLocation, 3) // set the color
     }, 1)
 
     utils.updateCursor(document.body, 0x2728, 'LG') // ✨ sparkles
     // this = animate button
     utils.updateCursor(this, 0x1f4a5, 'SM') // 💥 fire spark
+    this.classList.toggle('active')
 
     Array.from(confetti).map((element) => {
       if (element.classList.contains('yay')) {

@@ -33,12 +33,9 @@ export function setRectangle(gl, x, y, width, height) {
 
 /**
  * @param {WebGLRenderingContext} gl
- * @param {WebGLProgram} program
  * @param {number} count number of rectangles to draw
  */
-export function drawRectangles(gl, program, count) {
-  const colorUniformLocation = gl.getUniformLocation(program, 'u_color')
-  // draw 50 random rectangles in random colors
+export function drawRectangles(gl, colorUniformLocation, count) {
   for (let index = 0; index < count; ++index) {
     // Setup a random rectangle
     // This will write to positionBuffer because

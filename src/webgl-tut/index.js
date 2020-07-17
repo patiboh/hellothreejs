@@ -150,7 +150,7 @@ function main() {
 
     utils.updateCursor(document.body, 0x2728, 'LG') // ✨ sparkles
     // this = animate button
-    if (this.classList.contains('success')) {
+    if (this.classList.has('success')) {
       utils.updateCursor(this, 0x1f4a5, 'SM') // 💥 fire spark
     }
 

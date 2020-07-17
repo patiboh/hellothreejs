@@ -176,6 +176,7 @@ function main() {
       element.classList.add('nay')
     })
     utils.updateCursor(document.body, 0x1f47b, 'LG') // 👻 ghost
+    // utils.updateCursor(animate, 0x1f327, 'SM') // 🌧 cloud with rain
     utils.updateCursor(animate, 0x1f52b, 'SM') // 🔫 water pistol
     this.classList.remove('active')
     this.classList.remove('success')

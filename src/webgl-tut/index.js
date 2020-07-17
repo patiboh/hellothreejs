@@ -4,6 +4,8 @@ import * as utilsWebGl from './utilsWebGL.js'
 import * as draw from './draw.js'
 
 function main() {
+  // this = "Animate" button
+  this.classList.add('active')
   /************************
    * INITIALIZATION CODE
    * Code that gets executed once before the program runs
@@ -141,47 +143,43 @@ function main() {
      * Code that gets executed every time we draw
      ************************/
     // 9. Draw !
-    var primitiveType = gl.TRIANGLES
-    offset = 0
-    var count = 6
     const rectangularFireworks = window.setInterval(() => {
-      // Setup a rectangle
-      draw.drawRectangles(gl, colorUniformLocation, 3) // set the color
+      // Draw random rectangles 3 times (in theory 🤔)
+      draw.drawRectangles(gl, colorUniformLocation, 3)
     }, 1)
 
     utils.updateCursor(document.body, 0x2728, 'LG') // ✨ sparkles
     // this = animate button
-    utils.updateCursor(this, 0x1f4a5, 'SM') // 💥 fire spark
-    this.classList.toggle('active')
+    if (this.classList.contains('success')) {
+      utils.updateCursor(this, 0x1f4a5, 'SM') // 💥 fire spark
+    }
 
     Array.from(confetti).map((element) => {
-      if (element.classList.contains('yay')) {
-        element.classList.toggle('yay')
-      }
+      element.classList.remove('yay')
     })
     Array.from(poop).map((element) => {
-      if (element.classList.contains('nay')) {
-        element.classList.toggle('nay')
-      }
+      element.classList.remove('nay')
     })
     window.setTimeout(() => {
-      Array.from(confetti).map((element) => {
-        element.classList.toggle('yay')
-      })
+      this.classList.remove('active')
+      this.classList.remove('error')
+      this.classList.add('success')
       // this = animate button
       utils.updateCursor(this, 0x1f64c, 'SM') // 🙌 raised hands
-      this.classList.toggle('active')
-      this.blur()
+      Array.from(confetti).map((element) => {
+        element.classList.add('yay')
+      })
       window.clearInterval(rectangularFireworks)
     }, 1000)
   } catch (error) {
     Array.from(poop).map((element) => {
-      element.classList.toggle('nay')
+      element.classList.add('nay')
     })
     utils.updateCursor(document.body, 0x1f47b, 'LG') // 👻 ghost
     utils.updateCursor(animate, 0x1f52b, 'SM') // 🔫 water pistol
-    this.classList.toggle('active')
-    this.classList.toggle('error')
+    this.classList.remove('active')
+    this.classList.remove('success')
+    this.classList.add('error')
     console.error(error)
   }
 }
